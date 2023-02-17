@@ -3,6 +3,9 @@ dataset=pd.read_csv('placement.csv')
 print(dataset)
 print("------------------------------------------------------------------------------------")
 
+#change any column datatype
+dataset["workex"]=(dataset["workex"]=="Yes").astype(int)
+print(dataset)
 d=dataset.columns
 print(d)
 print("------------------------------------------------------------------------------------")
@@ -40,4 +43,3 @@ print(dataset)
 
 dataset.drop(['salary'],axis=1,inplace=True)
 print(dataset)
-
