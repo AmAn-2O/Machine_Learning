@@ -1,9 +1,13 @@
+from sklearn.impute import SimpleImputer
 import pandas as pd
+import numpy as np
 dataset=pd.read_csv('placement.csv')
 print(dataset)
 print("------------------------------------------------------------------------------------")
 
-#change any column datatype
+df=dataset.copy()
+print(df)
+# change any column datatype
 dataset["workex"]=(dataset["workex"]=="Yes").astype(int)
 print(dataset)
 d=dataset.columns
@@ -37,9 +41,27 @@ print("-------------------------------------------------------------------------
 d7=dataset.isnull().sum()
 print(d7)
 
+for column in dataset.columns:
+    if dataset[column].dtype!='object' and dataset[column].isnull().sum():
+        mean=dataset[column].mean()
+        dataset[column].fillna(mean,inplace=True)
 
-dataset.drop([1],axis=0,inplace=True)
 print(dataset)
+print(dataset.isnull().sum())
 
-dataset.drop(['salary'],axis=1,inplace=True)
+for column in dataset.columns:
+    if dataset[column].dtype=='object' and dataset[column].isnull().sum():
+        frequent=dataset[column].value_count()
+        dataset[column].fillna(frequent.index[0],inplace=True)
+
 print(dataset)
+print(dataset.isnull().sum())
+
+
+
+# dataset.drop([1],axis=0,inplace=True)
+# print(dataset)
+
+# dataset.drop(['salary'],axis=1,inplace=True)
+# print(dataset)
+
