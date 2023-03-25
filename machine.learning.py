@@ -2,7 +2,7 @@ from sklearn.impute import SimpleImputer
 import pandas as pd
 import numpy as np
 dataset=pd.read_csv('placement.csv')
-print(dataset)
+print( dataset)
 print("------------------------------------------------------------------------------------")
 
 df=dataset.copy()
