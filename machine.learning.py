@@ -44,7 +44,7 @@ print(d7)
 for column in dataset.columns:
     if dataset[column].dtype!='object' and dataset[column].isnull().sum():
         mean=dataset[column].mean()
-        dataset[column].fillna(mean,inplace=True)
+        dataset[column].fillna (mean,inplace=True)
 
 print(dataset)
 print(dataset.isnull().sum())
